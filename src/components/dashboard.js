@@ -11,8 +11,8 @@ export class Dashboard extends React.Component {
     render() {
         return (
             <div className="dashboard">
-                <div className="dashboard-username">
-                    Username: {this.props.username}
+                <div className="dashboard-email">
+                    email: {this.props.email}
                 </div>
                 <div className="dashboard-name">Name: {this.props.name}</div>
                 <div>
@@ -27,7 +27,7 @@ export class Dashboard extends React.Component {
 const mapStateToProps = state => {
     const {currentUser} = state.auth;
     return {
-        username: state.auth.currentUser.username,
+        email: state.auth.currentUser.email,
         name: `${currentUser.firstName} ${currentUser.lastName}`, 
         quotes: state.socialQuote.quotes
     };
