@@ -15,10 +15,7 @@ export class Dashboard extends React.Component {
                     username: {this.props.username}
                 </div>
                 <div className="dashboard-name">Name: {this.props.name}</div>
-                <div>
-                    <p> quotes will go here </p>
-                </div>
-            {/* put quotes here */}
+                <div className="quotes"> Quotes: {this.props.quotes}</div>
             </div>
         );
     }

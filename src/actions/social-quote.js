@@ -22,7 +22,7 @@ export const fetchSocialQuoteStarted = () => ({
 export const fetchSocialQuotes = () => (dispatch, getState) => {
     dispatch(fetchSocialQuoteStarted());
     const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/social-quote`, {
+    return fetch(`${API_BASE_URL}/social-quotes`, {
         method: 'GET',
         headers: {
             // Provide our auth token as credentials
