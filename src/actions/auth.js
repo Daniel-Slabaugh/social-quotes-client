@@ -42,6 +42,7 @@ const storeAuthInfo = (authToken, dispatch) => {
     saveAuthToken(authToken);
 };
 
+
 export const login = (username, password) => dispatch => {
     dispatch(authRequest());
     return (

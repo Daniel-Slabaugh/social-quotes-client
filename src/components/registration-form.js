@@ -27,7 +27,8 @@ export class RegistrationForm extends React.Component {
                 <Field component={Input} type="text" name="firstName" />
                 <label htmlFor="lastName">Last name</label>
                 <Field component={Input} type="text" name="lastName" />
-                <label htmlFor="username">username</label>
+                {/* Username in program is Email for Users */}
+                <label htmlFor="username">Email</label>
                 <Field
                     component={Input}
                     type="text"
