@@ -1,7 +1,8 @@
 import {
     FETCH_SOCIAL_QUOTE_STARTED,
     FETCH_SOCIAL_QUOTE_SUCCESS,
-    FETCH_SOCIAL_QUOTE_ERROR
+    FETCH_SOCIAL_QUOTE_ERROR, 
+    GENERAL_LOADING_STARTED
 } from '../actions/social-quote';
 
 const initialState = {

@@ -18,6 +18,11 @@ export const fetchSocialQuoteStarted = () => ({
     type: FETCH_SOCIAL_QUOTE_STARTED
 });
 
+export const GENERAL_LOADING_STARTED = 'GENERAL_LOADING_STARTED';
+export const generalLoadingStarted = () => ({
+    type: GENERAL_LOADING_STARTED
+});
+
 
 export const fetchSocialQuotes = () => (dispatch, getState) => {
     dispatch(fetchSocialQuoteStarted());
@@ -36,3 +41,7 @@ export const fetchSocialQuotes = () => (dispatch, getState) => {
         dispatch(fetchSocialQuoteError(err));
     });
 };
+
+export const fetchQuote = () => (dispatch, getState) => {
+    dispatch()
+}
