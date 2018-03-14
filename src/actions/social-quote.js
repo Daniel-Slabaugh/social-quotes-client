@@ -1,31 +1,25 @@
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 
-export const FETCH_SOCIAL_QUOTE_SUCCESS = 'FETCH_SOCIAL_QUOTE_SUCCESS';
-export const fetchSocialQuoteSuccess = quotes => ({
-    type: FETCH_SOCIAL_QUOTE_SUCCESS,
+export const SOCIAL_QUOTE_SUCCESS = 'FETCH_SOCIAL_QUOTE_SUCCESS';
+export const socialQuoteSuccess = quotes => ({
+    type: SOCIAL_QUOTE_SUCCESS,
     quotes
 });
 
-export const FETCH_SOCIAL_QUOTE_ERROR = 'FETCH_SOCIAL_QUOTE_ERROR';
-export const fetchSocialQuoteError = error => ({
+export const SOCIAL_QUOTE_ERROR = 'SOCIAL_QUOTE_ERROR';
+export const socialQuoteError = error => ({
     type: FETCH_SOCIAL_QUOTE_ERROR,
     error
 });
 
-export const FETCH_SOCIAL_QUOTE_STARTED = 'FETCH_SOCIAL_QUOTE_STARTED';
-export const fetchSocialQuoteStarted = () => ({
-    type: FETCH_SOCIAL_QUOTE_STARTED
+export const SOCIAL_QUOTE_STARTED = 'SOCIAL_QUOTE_STARTED';
+export const socialQuoteStarted = () => ({
+    type: SOCIAL_QUOTE_STARTED
 });
-
-export const GENERAL_LOADING_STARTED = 'GENERAL_LOADING_STARTED';
-export const generalLoadingStarted = () => ({
-    type: GENERAL_LOADING_STARTED
-});
-
 
 export const fetchSocialQuotes = () => (dispatch, getState) => {
-    dispatch(fetchSocialQuoteStarted());
+    dispatch(socialQuoteStarted());
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/social-quotes`, {
         method: 'GET',
@@ -36,12 +30,26 @@ export const fetchSocialQuotes = () => (dispatch, getState) => {
     })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(({quotes}) => dispatch(fetchSocialQuoteSuccess(quotes)))
+    .then(({quotes}) => dispatch(socialQuoteSuccess(quotes)))
     .catch(err => {
-        dispatch(fetchSocialQuoteError(err));
+        dispatch(socialQuoteError(err));
     });
 };
 
-export const fetchQuote = () => (dispatch, getState) => {
-    dispatch()
-}
+export const fetchSocialQuotes = () => (dispatch, getState) => {
+    dispatch(socialQuoteStarted());
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/social-quotes`, {
+        method: 'GET',
+        headers: {
+            // Provide our auth token as credentials
+            Authorization: `Bearer ${authToken}`
+        }
+    })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(({quotes}) => dispatch(socialQuoteSuccess(quotes)))
+    .catch(err => {
+        dispatch(socialQuoteError(err));
+    });
+};

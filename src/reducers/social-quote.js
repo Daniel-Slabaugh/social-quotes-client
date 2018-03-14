@@ -1,8 +1,7 @@
 import {
-    FETCH_SOCIAL_QUOTE_STARTED,
-    FETCH_SOCIAL_QUOTE_SUCCESS,
-    FETCH_SOCIAL_QUOTE_ERROR, 
-    GENERAL_LOADING_STARTED
+    SOCIAL_QUOTE_STARTED,
+    SOCIAL_QUOTE_SUCCESS,
+    SOCIAL_QUOTE_ERROR
 } from '../actions/social-quote';
 
 const initialState = {
@@ -18,23 +17,23 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-    if (action.type === FETCH_SOCIAL_QUOTE_STARTED) {
+    if (action.type === SOCIAL_QUOTE_STARTED) {
         return Object.assign({}, state, {
             loading: true,
             error: null
         });
-    } else if (action.type === FETCH_SOCIAL_QUOTE_SUCCESS) {
+    } else if (action.type === SOCIAL_QUOTE_SUCCESS) {
         return Object.assign({}, state, {
             quotes: action.quotes, 
             loading: false, 
             error: null
         });
-    } else if (action.type === FETCH_SOCIAL_QUOTE_ERROR) {
+    } else if (action.type === SOCIAL_QUOTE_ERROR) {
         return Object.assign({}, state, {
             loading: false, 
             error: action.error
         });
-    }
+    } 
     return state;
 }
 
